@@ -2,7 +2,6 @@ from IPython.core.magic import register_line_cell_magic
 from IPython import get_ipython
 import yaml
 import os
-from .core import heading
 
 # Install omegaconf if not already available
 try:
