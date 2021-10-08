@@ -18,7 +18,8 @@ from ..core import HARDWARE, ENV
 
 # Module Imports for Notebook
 from .factory import (
-    lr_scheduler_factory, optimizer_factory, callbacks_factory, get_wandb_callback
+    lr_scheduler_factory, optimizer_factory, callbacks_factory, get_wandb_callback,
+    build_hidden_layer,
 )
 
 
@@ -70,4 +71,12 @@ def adjust_batch_size_tpu(batch_size):
     if ENV == 'Colab' and HARDWARE == 'TPU':
         # Colab TPU have less memory than Kaggle TPUs
         print('Halfing batch size for Colab TPU')
-    return max(batch_size, 2)
+    print('using batch size: ', batch_size)
+    return batch_size
+
+
+def get_gcs_path(dataset_name):
+    from kaggle_datasets import KaggleDatasets
+    gcs_path = KaggleDatasets().get_gcs_path(dataset_name)
+    print(f'GCS path for {dataset_name}: ', gcs_path)
+    return gcs_path

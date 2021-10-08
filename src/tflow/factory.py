@@ -216,7 +216,10 @@ def lr_scheduler_factory(kwargs):
             scale_mode='cycle',
         )
     elif kwargs._target_ == 'CosineDecayRestarts':
-        first_decay_steps = non_warmup_steps//sum(kwargs.step_gamma**i for i in range(1, kwargs.num_cycles))
+        if kwargs.num_cycles > 1:
+            first_decay_steps = non_warmup_steps//sum(kwargs.step_gamma**i for i in range(1, kwargs.num_cycles))
+        else:
+            first_decay_steps = kwargs.train_steps * 1 / kwargs.num_cycles
         lr_scheduler = CosineDecayRestarts(kwargs.lr, first_decay_steps, kwargs.step_gamma, kwargs.lr_gamma, kwargs.min_lr_ratio)
 
     # Add Warmup to LR Scheduler
@@ -232,3 +235,14 @@ def lr_scheduler_factory(kwargs):
     return lr_scheduler
 
 
+# MODEL
+def build_hidden_layer(hidden_layers=None):
+    if hidden_layers is None:
+        print('No hidden layers')
+        return tf.keras.layers.Layer(name='hidden_layer')
+
+    print('Building hidden layers:', hidden_layers)
+    return tf.keras.Sequential(
+        [tf.keras.layers.Dense(units, activation=tfa.activations.mish) for units in hidden_layers],
+        name='hidden_layer'
+    )
