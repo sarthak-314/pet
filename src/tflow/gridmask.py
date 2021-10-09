@@ -113,7 +113,6 @@ def get_grid_mask(img_size, aug_params_gridmask):
     return grid_mask_fn
 
 
-@AUG.register_module(name="gridmask")
 class GridMask(object):
     """GridMask.
     Class which provides grid masking augmentation
