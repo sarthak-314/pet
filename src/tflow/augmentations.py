@@ -120,7 +120,7 @@ def augmentations_factory(aug_hp, img_size):
         img = random_shear_x(img, aug_hp.shear_prob, lower=0, upper=1)
         img = random_shear_y(img, aug_hp.shear_prob, lower=0, upper=1)
         img = random_rotate(img, p=0.75, range=aug_hp.random_rotate_range)
-        img = random_erase(img, **aug_hp.random_erasing)
+        # img = random_erase(img, **aug_hp.random_erasing)
 
         # TODO: Make it better
         if occur(aug_hp.augmix.p):
