@@ -127,7 +127,7 @@ def augmentations_factory(aug_hp, img_size):
             img = augmix(img, img_size, aug_hp.augmix.severity, aug_hp.augmix.width, aug_hp.augmix.depth)
         if occur(aug_hp.gridmask.p):
             gridmask = GridMask((img_size, img_size), aug_hp.gridmask.ratio, aug_hp.gridmask.rotate, aug_hp.gridmask.gridmask_size_ratio, fill=0)
-            img = gridmask(img)
+            img = gridmask(img, label)
 
         return img, label
 
