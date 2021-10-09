@@ -208,4 +208,4 @@ class GridMask(object):
         mask = tf.cast(mask, image.dtype)
         mask = tf.expand_dims(mask, -1) if image._rank() != mask._rank() else mask
         image *= mask
-        return image, label
+        return image
