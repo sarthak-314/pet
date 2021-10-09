@@ -97,7 +97,7 @@ def basic_augmentations(img, aug_hp):
 def random_erase(img, p=0.5, min_area=0.02, max_area=0.4, max_aspect_ratio=0.3):
     if not occur(p): return img
 
-    ht, wd, ch = tf.shape(img)
+    ht, wd, ch = tf.shape(img)[0], tf.shape(img)[1], tf.shape(img)[2]
     area = tf.cast(ht*wd, tf.float32)
 
     erase_area_low_bound = tf.cast(tf.round(tf.sqrt(min_area * area * max_aspect_ratio)), tf.int32)
