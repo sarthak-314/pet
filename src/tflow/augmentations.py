@@ -31,6 +31,7 @@ augmentations:
 
 
 """
+import tensorflow_addons as tfa
 import tensorflow as tf
 from .augmix import augmix
 from .gridmask import GridMask
