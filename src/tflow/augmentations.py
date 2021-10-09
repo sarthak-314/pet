@@ -64,7 +64,7 @@ def random_shear_x(img, p, lower, upper):
 def random_shear_y(img, p, lower, upper):
     if not occur(p): return img
     sheary = tf.random.uniform([], lower, upper)
-    return tfa.image.shear_y(img, level=sheary)
+    return tfa.image.shear_y(img, level=sheary, replace=0)
 
 def basic_augmentations(img, aug_hp):
     if occur(aug_hp.flip_prob):
