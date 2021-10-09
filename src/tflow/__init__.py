@@ -18,8 +18,8 @@ from ..core import HARDWARE, ENV
 
 # Module Imports for Notebook
 from .factory import (
-    lr_scheduler_factory, optimizer_factory, callbacks_factory, get_wandb_callback,
-    build_hidden_layer,
+    lr_scheduler_factory, optimizer_factory, callbacks_factory, augmentations_factory,
+    get_wandb_callback, build_hidden_layer,
 )
 
 

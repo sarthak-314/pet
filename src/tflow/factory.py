@@ -246,3 +246,4 @@ def build_hidden_layer(hidden_layers=None):
         [tf.keras.layers.Dense(units, activation=tfa.activations.mish) for units in hidden_layers],
         name='hidden_layer'
     )
+
