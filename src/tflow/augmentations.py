@@ -36,6 +36,12 @@ import tensorflow as tf
 from .augmix import augmix
 from .gridmask import GridMask
 
+from IPython.core.magic import register_line_cell_magic
+from omegaconf import OmegaConf
+from IPython import get_ipython
+import yaml
+import os
+
 def occur(prob):
     'prob: chance that this returns True'
     return prob < tf.random.uniform([], 0, 1.0, dtype=tf.float32)
@@ -112,6 +118,19 @@ def random_erase(img, p=0.5, min_area=0.02, max_area=0.4, max_aspect_ratio=0.3):
     erased_area = tf.cast(tf.random.uniform([h, w, ch], 0, 255, tf.int32), tf.uint8)
     erased_img = img[x1:x1+h, y1:y1+w, :].assign(erased_area)
     return erased_img
+
+
+# Augmentations Magic Command
+@register_line_cell_magic
+def augmentations_config(_, cell):
+    'Magic command to load augmentations config into the NB'
+    with open('augmentations.yaml', 'w') as f:
+        f.write(cell)
+
+    # Load the YAML file into the variable AUG
+    AUG = OmegaConf.load('augmentations.yaml')
+    get_ipython().user_ns['AUG'] = AUG
+
 
 def augmentations_factory(aug_hp, img_size):
     # TODO: Random Scale, Random Rotate, Random Blur

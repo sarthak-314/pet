@@ -21,7 +21,7 @@ from .factory import (
     lr_scheduler_factory, optimizer_factory, callbacks_factory,
     get_wandb_callback, build_hidden_layer,
 )
-from .augmentations import augmentations_factory
+from .augmentations import augmentations_factory, augmentations_config
 
 
 def _enable_mixed_precision():
