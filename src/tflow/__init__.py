@@ -18,9 +18,10 @@ from ..core import HARDWARE, ENV
 
 # Module Imports for Notebook
 from .factory import (
-    lr_scheduler_factory, optimizer_factory, callbacks_factory, augmentations_factory,
+    lr_scheduler_factory, optimizer_factory, callbacks_factory,
     get_wandb_callback, build_hidden_layer,
 )
+from .augmentations import augmentations_factory
 
 
 def _enable_mixed_precision():
