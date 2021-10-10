@@ -44,7 +44,7 @@ import os
 
 def occur(prob):
     'prob: chance that this returns True'
-    return prob < tf.random.uniform([], 0, 1.0, dtype=tf.float32)
+    return prob > tf.random.uniform([], 0, 1.0, dtype=tf.float32)
 
 def rand():
     'Get random number between 0, 1'
@@ -154,3 +154,5 @@ def augmentations_factory(aug_hp, img_size):
         return img, label
 
     return unbatched_augmentations, batched_augmentations
+
+
