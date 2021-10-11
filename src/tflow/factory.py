@@ -200,8 +200,8 @@ class CosineDecayRestarts(tf.keras.optimizers.schedules.LearningRateSchedule):
         }
 
 def lr_scheduler_factory(kwargs):
-    non_warmup_steps = kwargs.train_steps * (1-kwargs.warmup.ratio)
-    warmup_steps = kwargs.warmup.ratio * kwargs.train_steps
+    non_warmup_steps = kwargs.train_steps * (1-kwargs.warmup.epochs)
+    warmup_steps = kwargs.warmup.epochs * kwargs.train_steps
     if kwargs._target_ == 'constant':
         print('Using constant lr')
         lr_scheduler = lambda step: kwargs.lr
