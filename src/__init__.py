@@ -23,6 +23,7 @@ import re
 # Uncommonly Used Libraries
 from sklearn.utils.class_weight import compute_class_weight
 from sklearn.model_selection import train_test_split
+from sklearn.model_selection import StratifiedKFold
 from IPython.display import display, Markdown
 from dataclasses import dataclass, asdict
 from distutils.dir_util import copy_tree
@@ -42,10 +43,7 @@ import gc
 
 # Package Imports
 from .hyperparameters import hyperparameters
-from .core import (
-    ENV, HARDWARE, IS_ONLINE, KAGGLE_INPUT_DIR, WORKING_DIR, TMP_DIR,
-    red, blue, green, yellow,
-)
+from .core import *
 
 
 def _setup_jupyter_notebook():

@@ -65,6 +65,8 @@ KAGGLE_INPUT_DIR = Path('/kaggle/input')
 WORKING_DIR = _solve_working_dir(ENV)
 TMP_DIR = _solve_tmp_dir(WORKING_DIR)
 
+#  Constants
+RANDOM_SEED = 69420
 
 
 # Termcolor Colors
@@ -74,4 +76,10 @@ green = lambda str: colored(str, 'green')
 yellow = lambda str: colored(str, 'yellow')
 
 
+# Commonly Used Functions in Notebooks & Scripts
 
+def get_gcs_path(dataset_name):
+    from kaggle_datasets import KaggleDatasets
+    gcs_path = KaggleDatasets().get_gcs_path(dataset_name)
+    print(f'GCS path for {dataset_name}: ', gcs_path)
+    return gcs_path
