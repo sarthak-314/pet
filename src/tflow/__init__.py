@@ -6,13 +6,20 @@ Tensorflow Startup Script
 import tensorflow as tf
 import os
 
-# Install tensorflow addons if not already available
+# Install tensorflow addons & tensorflow hub if not already available
 try:
     import tensorflow_addons as tfa
 except:
     print('Installing tensorflow_addons')
     os.system('pip install -q tensorflow_addons')
     import tensorflow_addons as tfa
+try:
+    import tensorflow_hub as hub
+except:
+    print('Installing tensorflow hub')
+    os.system('pip install -q tensorflow_hub')
+    import tensorflow_hub as hub
+
 
 from ..core import HARDWARE, ENV
 

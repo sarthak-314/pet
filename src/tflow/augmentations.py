@@ -130,6 +130,7 @@ def augmentations_config(_, cell):
     # Load the YAML file into the variable AUG
     AUG = OmegaConf.load('augmentations.yaml')
     get_ipython().user_ns['AUG'] = AUG
+    get_ipython().user_ns['aug'] = AUG
 
 
 def augmentations_factory(aug_hp, img_size):
